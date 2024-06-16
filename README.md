@@ -1,18 +1,34 @@
 # Load Benchmark on Various Task Queues in Python
 
+This repository contains scripts for load testing various Python task queue libraries.
+ 
+The purpose of these tests is to provide a general sense of the performance and scalability of different task queue systems under heavy loads. 
+
+Additionally, I am exploring how to use each library as a user, evaluating how easy they are to set up, how intuitive their APIs are, and the overall user experience with their CLI. 
+
+Note that these tests are not critical evaluations but rather exploratory assessments to give a general feel of how each system performs.
+
 The task queue libraries in this benchmark:
 
-- **RQ (Redis Queue)**
-- **ARQ (Async Redis Queue)**
-- **Celery**
-- **Huey**
-- **Dramatiq**
+- [RQ (Redis Queue)]((https://python-rq.org/))
+- [ARQ (Async Redis Queue)](https://arq-docs.helpmanual.io/)
+- [Celery](https://docs.celeryq.dev/en/main/getting-started/introduction.html)
+- [Huey](https://huey.readthedocs.io/en/latest/)
+- [Dramatiq](https://dramatiq.io/index.html)
 
 ## Test Method
 
 The benchmark is very naive, it measure the total time spent on processing `20,000` jobs by `10` workers. Each job simply prints the current time.
 
 All tests were conducted on a MacBook Pro 14 inch M2 Pro with 16GB of RAM.
+
+### Time to Enqueue 20,000 Jobs
+
+<img src="images/enqueue_times.png" alt="Time to Enqueue 20,000 Jobs" width="45%">
+
+### Time to Finish 20,000 Jobs with 10 Workers
+
+<img src="images/finish_times.png" alt="Time to Finish 20,000 Jobs with 10 Workers" width="45%">
 
 ## Prerequisites
 
@@ -30,8 +46,6 @@ pdm install
 
 ## RQ
 
-[RQ Documentation](https://python-rq.org/)
-
 1. Navigate to the RQ directory:
    ```bash
    cd rq
@@ -42,8 +56,8 @@ pdm install
    ```
 3. Process jobs:
    ```bash
-  python -c "import time; print(f'Start time: {time.time()}')" > time.log && rq worker-pool -q -n 10
-  ```
+   python -c "import time; print(f'Start time: {time.time()}')" > time.log && rq worker-pool -q -n 10
+   ```
 4. Record the time when the last job finishes and note the start time in `time.log`.
 5. Calculate the difference.
 
@@ -54,8 +68,6 @@ pdm install
 
 
 ## ARQ
-
-[ARQ Documentation](https://arq-docs.helpmanual.io/)
 
 1. Navigate to the ARQ directory:
    ```bash
@@ -79,8 +91,6 @@ pdm install
 
 
 ## Celery
-
-[Celery Documentation](https://docs.celeryq.dev/en/main/getting-started/introduction.html)
 
 1. Navigate to the Celery directory:
    ```bash
@@ -107,8 +117,6 @@ python -c "import time; print(f'Start time: {time.time()}')" > time.log && celer
 
 ## Huey
 
-[Huey Documentation](https://huey.readthedocs.io/en/latest/)
-
 1. Navigate to the Huey directory:
    ```bash
    cd huey
@@ -128,11 +136,9 @@ python -c "import time; print(f'Start time: {time.time()}')" > time.log && celer
 
 - All jobs enqueued within: 2.40 seconds
 - With 10 thread workers, finished in 4.15 seconds
-- With 10 process workers (`-k process -w 10 -d 0.001 -C -q`), finished in 3.18 seconds
+- With 10 process workers (`-k process -w 10 -d 0.001 -C -q`), finished in 3.62 seconds
 
 ## Dramatiq
-
-[Dramatiq Documentation](https://dramatiq.io/index.html)
 
 1. Navigate to the Dramatiq directory:
    ```bash
@@ -153,4 +159,5 @@ python -c "import time; print(f'Start time: {time.time()}')" > time.log && celer
 
 - All jobs enqueued within: 3.27 seconds
 - With 1 process and 10 threads, finished in 4.12 seconds
+- With 10 process and 1 threads, finished in 4.35 seconds
 - With default settings (10 processes, 8 threads), finished in 1.53 seconds
