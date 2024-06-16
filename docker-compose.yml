@@ -1,0 +1,12 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    sysctls:
+      net.core.somaxconn: '511'
+volumes:
+  redis_data:
