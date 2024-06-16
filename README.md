@@ -42,6 +42,8 @@ Install [pdm](https://pdm-project.org/en/latest/#installation), and then run:
 
 ```bash
 pdm install
+
+source .venv/bin/activate
 ```
 
 ## RQ
