@@ -24,11 +24,11 @@ All tests were conducted on a MacBook Pro 14 inch M2 Pro with 16GB of RAM.
 
 ### Time to Enqueue 20,000 Jobs
 
-<img src="images/enqueue_times.png" alt="Time to Enqueue 20,000 Jobs" width="45%">
+<img src="images/enqueue_times.png" alt="Time to Enqueue 20,000 Jobs" width="50%">
 
 ### Time to Finish 20,000 Jobs with 10 Workers
 
-<img src="images/finish_times.png" alt="Time to Finish 20,000 Jobs with 10 Workers" width="45%">
+<img src="images/finish_times.png" alt="Time to Finish 20,000 Jobs with 10 Workers" width="50%">
 
 ## Prerequisites
 
