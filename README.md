@@ -10,7 +10,7 @@ Note that these tests are not critical evaluations but rather exploratory assess
 
 The task queue libraries in this benchmark:
 
-- [RQ (Redis Queue)]((https://python-rq.org/))
+- [RQ (Redis Queue)](https://python-rq.org/)
 - [ARQ (Async Redis Queue)](https://arq-docs.helpmanual.io/)
 - [Celery](https://docs.celeryq.dev/en/main/getting-started/introduction.html)
 - [Huey](https://huey.readthedocs.io/en/latest/)
