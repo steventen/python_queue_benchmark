@@ -163,3 +163,9 @@ python -c "import time; print(f'Start time: {time.time()}')" > time.log && celer
 - With 1 process and 10 threads, finished in 4.12 seconds
 - With 10 process and 1 threads, finished in 4.35 seconds
 - With default settings (10 processes, 8 threads), finished in 1.53 seconds
+
+
+## TODO
+
+- Get the time from stored results in the queue, so that the whole process can be automated.
+- Test in larger size, and verify failures, error handlings.
