@@ -6,17 +6,13 @@ authors = [
     {name = "Steven Yue", email = "hey.steveny@gmail.com"},
 ]
 dependencies = [
-    "rq>=1.16.2",
-    "dramatiq[redis,watch]>=1.17.0",
-    "huey>=2.5.1",
-    "arq>=0.26.0",
-    "supervisor>=4.2.5",
-    "celery[redis]>=5.4.0",
+    "rq==1.16.2",
+    "dramatiq[redis,watch]==1.17.0",
+    "huey==2.5.1",
+    "arq==0.26.0",
+    "supervisor==4.2.5",
+    "celery[redis]==5.4.0",
 ]
-requires-python = "==3.12.*"
+requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
-
-
-[tool.pdm]
-distribution = false

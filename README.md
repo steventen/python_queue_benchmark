@@ -1,10 +1,10 @@
 # Load Benchmark on Various Task Queues in Python
 
 This repository contains scripts for load testing various Python task queue libraries.
- 
-The purpose of these tests is to provide a general sense of the performance and scalability of different task queue systems under heavy loads. 
 
-Additionally, I am exploring how to use each library as a user, evaluating how easy they are to set up, how intuitive their APIs are, and the overall user experience with their CLI. 
+The purpose of these tests is to provide a general sense of the performance and scalability of different task queue systems under heavy loads.
+
+Additionally, I am exploring how to use each library as a user, evaluating how easy they are to set up, how intuitive their APIs are, and the overall user experience with their CLI.
 
 Note that these tests are not critical evaluations but rather exploratory assessments to give a general feel of how each system performs.
 
@@ -38,10 +38,10 @@ Before running the tests, ensure you have Docker installed. Start Redis using Do
 docker compose up
 ```
 
-Install [pdm](https://pdm-project.org/en/latest/#installation), and then run:
+Install [uv](https://github.com/astral-sh/uv), and then run:
 
 ```bash
-pdm install
+uv sync
 
 source .venv/bin/activate
 ```
