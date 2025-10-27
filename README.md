@@ -15,6 +15,7 @@ The task queue libraries in this benchmark:
 - [Celery](https://docs.celeryq.dev/en/main/getting-started/introduction.html)
 - [Huey](https://huey.readthedocs.io/en/latest/)
 - [Dramatiq](https://dramatiq.io/index.html)
+- [Taskiq](https://taskiq-python.github.io/)
 
 ## Test Method
 
@@ -24,11 +25,11 @@ All tests were conducted on a MacBook Pro 14 inch M2 Pro with 16GB of RAM.
 
 ### Time to Enqueue 20,000 Jobs
 
-<img src="images/enqueue_times.png" alt="Time to Enqueue 20,000 Jobs" width="50%">
+<img src="images/enqueue_times_updated.png" alt="Time to Enqueue 20,000 Jobs (Updated with Taskiq)" width="50%">
 
 ### Time to Finish 20,000 Jobs with 10 Workers
 
-<img src="images/finish_times.png" alt="Time to Finish 20,000 Jobs with 10 Workers" width="50%">
+<img src="images/finish_times_updated.png" alt="Time to Finish 20,000 Jobs with 10 Workers (Updated with Taskiq)" width="50%">
 
 ## Prerequisites
 
@@ -163,6 +164,30 @@ python -c "import time; print(f'Start time: {time.time()}')" > time.log && celer
 - With 1 process and 10 threads, finished in 4.12 seconds
 - With 10 process and 1 threads, finished in 4.35 seconds
 - With default settings (10 processes, 8 threads), finished in 1.53 seconds
+
+## Taskiq
+
+The taskiq is set up using the `RedisStreamBroker` from `taskiq-redis`.
+
+1. Navigate to the Taskiq directory:
+   ```bash
+   cd taskiq
+   ```
+2. Enqueue the jobs:
+   ```bash
+   python enqueue_jobs.py
+   ```
+3. Process jobs:
+   ```bash
+   python -c "import time; print(f'Start time: {time.time()}')" > time.log && taskiq worker --workers 10 tasks:broker
+   ```
+4. Record the time when the last job finishes and note the start time in `time.log`.
+5. Calculate the difference.
+
+### Results
+
+- All jobs enqueued within: 5.97 seconds
+- With 10 workers, finished in 2.03 seconds
 
 
 ## TODO
