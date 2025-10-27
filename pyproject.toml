@@ -9,9 +9,12 @@ dependencies = [
     "rq==1.16.2",
     "dramatiq[redis,watch]==1.17.0",
     "huey==2.5.1",
-    "arq==0.26.0",
+    "arq==0.26.3",
     "supervisor==4.2.5",
     "celery[redis]==5.4.0",
+    "taskiq==0.11.19",
+    "taskiq-redis==1.0.9",
+    "matplotlib>=3.10.7",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
