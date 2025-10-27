@@ -25,11 +25,11 @@ All tests were conducted on a MacBook Pro 14 inch M2 Pro with 16GB of RAM.
 
 ### Time to Enqueue 20,000 Jobs
 
-<img src="images/enqueue_times_updated.png" alt="Time to Enqueue 20,000 Jobs (Updated with Taskiq)" width="50%">
+![Time to Enqueue 20,000 Jobs](images/enqueue_times_updated.png)
 
 ### Time to Finish 20,000 Jobs with 10 Workers
 
-<img src="images/finish_times_updated.png" alt="Time to Finish 20,000 Jobs with 10 Workers (Updated with Taskiq)" width="50%">
+![Time to Finish 20,000 Jobs with 10 Workers](images/finish_times_updated.png)
 
 ## Prerequisites
 

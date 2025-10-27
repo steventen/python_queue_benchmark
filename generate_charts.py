@@ -32,47 +32,47 @@ finish_data = {
 
 def create_enqueue_chart():
     """Create the enqueue times chart."""
-    plt.figure(figsize=(12, 8))
+    plt.figure(figsize=(10, 6))
 
     # Sort by time for better visualization
     sorted_data = sorted(enqueue_data.items(), key=lambda x: x[1])
     libraries_sorted, times_sorted = zip(*sorted_data)
 
     bars = plt.barh(libraries_sorted, times_sorted, color='lightblue', alpha=0.8)
-    plt.xlabel('Time (seconds)')
-    plt.title('Time to Enqueue 20,000 Jobs')
+    plt.xlabel('Time (seconds)', fontsize=12)
+    plt.title('Time to Enqueue 20,000 Jobs', fontsize=14, fontweight='bold')
     plt.grid(True, alpha=0.3, linestyle='--')
 
     # Add value labels on bars
     for i, (bar, time) in enumerate(zip(bars, times_sorted)):
         plt.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height()/2,
-                 f'{time:.2f}s', ha='left', va='center', fontweight='bold')
+                 f'{time:.2f}s', ha='left', va='center', fontweight='bold', fontsize=10)
 
     plt.tight_layout()
-    plt.savefig('images/enqueue_times_updated.png', dpi=300, bbox_inches='tight')
+    plt.savefig('images/enqueue_times_updated.png', dpi=150, bbox_inches='tight')
     plt.close()
     print("✓ Enqueue times chart created: images/enqueue_times_updated.png")
 
 def create_finish_chart():
     """Create the finish times chart."""
-    plt.figure(figsize=(12, 10))
+    plt.figure(figsize=(10, 8))
 
     # Sort by time for better visualization
     sorted_finish = sorted(finish_data.items(), key=lambda x: x[1])
     libraries_finish_sorted, times_finish_sorted = zip(*sorted_finish)
 
     bars = plt.barh(libraries_finish_sorted, times_finish_sorted, color='lightcoral', alpha=0.8)
-    plt.xlabel('Time (seconds)')
-    plt.title('Time to Finish 20,000 Jobs with 10 Workers')
+    plt.xlabel('Time (seconds)', fontsize=12)
+    plt.title('Time to Finish 20,000 Jobs with 10 Workers', fontsize=14, fontweight='bold')
     plt.grid(True, alpha=0.3, linestyle='--')
 
     # Add value labels on bars
     for i, (bar, time) in enumerate(zip(bars, times_finish_sorted)):
-        plt.text(bar.get_width() + 0.5, bar.get_y() + bar.get_height()/2,
-                 f'{time:.2f}s', ha='left', va='center', fontweight='bold')
+        plt.text(bar.get_width() + 1.0, bar.get_y() + bar.get_height()/2,
+                 f'{time:.2f}s', ha='left', va='center', fontweight='bold', fontsize=10)
 
     plt.tight_layout()
-    plt.savefig('images/finish_times_updated.png', dpi=300, bbox_inches='tight')
+    plt.savefig('images/finish_times_updated.png', dpi=150, bbox_inches='tight')
     plt.close()
     print("✓ Finish times chart created: images/finish_times_updated.png")
 
