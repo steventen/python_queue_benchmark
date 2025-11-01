@@ -16,6 +16,7 @@ The task queue libraries in this benchmark:
 - [Huey](https://huey.readthedocs.io/en/latest/)
 - [Dramatiq](https://dramatiq.io/index.html)
 - [Taskiq](https://taskiq-python.github.io/)
+ - [Procrastinate](https://procrastinate.readthedocs.io/)
 
 ## Test Method
 
@@ -188,6 +189,35 @@ The taskiq is set up using the `RedisStreamBroker` from `taskiq-redis`.
 
 - All jobs enqueued within: 5.97 seconds
 - With 10 workers, finished in 2.03 seconds
+
+
+## Procrastinate
+
+Procrastinate stores jobs in PostgreSQL instead of Redis.
+
+1. Navigate to the Procrastinate directory:
+   ```bash
+   cd procrastinate
+   ```
+2. Apply the Procrastinate DB schema (one-time or after DB reset):
+   ```bash
+   export PYTHONPATH=.
+   procrastinate --app=tasks.app schema --apply
+   ```
+3. Enqueue the jobs:
+   ```bash
+   python enqueue_jobs.py
+   ```
+4. Process jobs with 10 workers:
+   ```bash
+   python -c "import time; print(f'Start time: {time.time()}')" > time.log && procrastinate --app=tasks.app worker --concurrency 10
+   ```
+5. Record the time when the last job finishes and note the start time in `time.log`. Calculate the difference.
+
+### Results
+
+- All jobs enqueued within: 17.51 seconds
+- With 10 concurrency, finished in: 27.46 seconds
 
 
 ## TODO

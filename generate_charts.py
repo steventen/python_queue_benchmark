@@ -14,7 +14,8 @@ enqueue_data = {
     'Celery': 6.34,
     'Huey': 2.40,
     'Dramatiq': 3.27,
-    'Taskiq': 5.97
+    'Taskiq': 5.97,
+    'Procrastinate': 17.51,
 }
 
 # Finish times data (excluding Dramatiq 10p, 8t for fair comparison)
@@ -27,7 +28,8 @@ finish_data = {
     'Huey (Processes)': 3.62,
     'Dramatiq (1p, 10t)': 4.12,
     'Dramatiq (10p, 1t)': 4.35,
-    'Taskiq (10 workers)': 2.03
+    'Taskiq (10 workers)': 2.03,
+    'Procrastinate (10 concurrency)': 27.46,
 }
 
 def create_enqueue_chart():

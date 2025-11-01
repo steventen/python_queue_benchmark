@@ -6,3 +6,12 @@ services:
       - "6379:6379"
     sysctls:
       net.core.somaxconn: '511'
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: procrastinate
+    ports:
+      - "5432:5432"
